@@ -5,19 +5,33 @@
 #include <regex>
 #include <vector>
 #include <cstdlib>
+#include <cstring>
 
 using namespace std;
 int main () {
 
 
-//RUNNING THE JAR
+string x="/Users/mtruong/IdeaProjects/FeasibilityStudies/OrekitAccessDopplerCalculator/out/artifacts/OrekitAccessDopplerCalculator_jar/OrekitAccessDopplerCalculator.jar";
 
-std::system("chmod +x OrekitAccessDopplerCalculator.jar"); //might need this line for permissions?
+//RUNNING THE JAR
+string commandString="chmod "+x;
+
+//cout <<commandString<< "\n";
+const char *commandStringChar=commandString.c_str();
+//std::system(commandStringChar); //might need this line for permissions?
+
 
 //command syntax:
 //java -jar OrekitAccessDopplerCalculator.jar errorTimeForTLE=0.3 recordingRate=60 noradID=30776 channelFrequency=437.15 endTime=2020-02-12T17:08:34.584+00:00
 
-std::system("java -jar OrekitAccessDopplerCalculator.jar noradID=30776 errorTimeForTLE=0.3");
+string oreCommandString="java -jar "+x+" noradID=30776 errorTimeForTLE=0.3";
+
+const char *oreCommandStringChar=oreCommandString.c_str();
+cout <<oreCommandStringChar<< "\n";
+
+std::system(oreCommandStringChar);
+
+//std::system("java -jar "+x+"OrekitAccessDopplerCalculator.jar noradID=30776 errorTimeForTLE=0.3");
 
 
 
@@ -147,8 +161,15 @@ cout<<to_string(frequencyArray[0].size())<< '\n';
  }
 
 
-// cout << "Hello World \n"; // prints Hello World
- 
+//Python Command for Andrew's Program...
+
+
+//python record_ref.py --channel-freq=X --samp-rate=X --center-freq=X --num-samples=X --file-loc=’/home/pi/Documents/Record/XXXXX’ 
+
+
+
+
+
  return 0;
 
 }
